@@ -26,11 +26,11 @@ You can create a photo gallery or video, file archives.
     &filetip - types of output files (comma), by default - 'jpg,png,gif'
 
 ### Example snippet call:
-    [[!filedir? &dir = `assets/images/[[*id]]/`]]
+    :::php[[!filedir? &dir = `assets/images/[[*id]]/`]]
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]
     
 *   An example of a template for the gallery
-    < div >
+    :::html< div >
       < a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
       < /a >
