@@ -26,31 +26,25 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
     &filetip - types of output files (comma), by default - 'jpg,png,gif'
 
 ### Example snippet call:
-<<<<<<< HEAD:README.markdown
-    :::php[[!filedir? &dir = `assets/images/[[*id]]/`]]
-=======
-	```php
+
+    ```php[[!filedir? &dir = `assets/images/[[*id]]/`]]
     [[!filedir? &dir = `assets/images/[[*id]]/`]]
->>>>>>> add:README.md
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]
     ```
     
 *   An example of a template for the gallery
-<<<<<<< HEAD:README.markdown
-    :::html< div >
-      < a href="[[+file]]" title="[[+fname]]">
+    ```html<div>
+      <a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
-      < /a >
-    < /div >
+      </a>
+    </div>```
 
 *   An example of a template for the file archive
-    < div >
+    ```html<div>
       File: [[+fname]]
       Saze: [[+size]]
-      < a href="[[+file]]">Download< /a >
-    < /div >
-=======
-	```html
+      <a href="[[+file]]">Download</a>
+    </div>
     <div>
       <a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
@@ -66,7 +60,6 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
       <a href="[[+file]]">Download</a>
     </div>
     ```
->>>>>>> add:README.md
 
 *   You can use c expansion FileUpload
     Example:
@@ -75,24 +68,20 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
     & uploadfields=`20`
     & uploadgroups=`Administrator, Editors, Subadmins`
     & path=`assets/images/[[*id]]`
-    !]]
-<<<<<<< HEAD:README.markdown
-
+    !]]```
+	```html
     < div >
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
-    < /div >
-=======
-    ```
+    < /div >```
+
     ```html
     <div>
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
-    </div>
-    ```
->>>>>>> add:README.md
+    </div>```
 
 ### Authors
 <table>
