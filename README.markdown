@@ -30,18 +30,18 @@ You can create a photo gallery or video, file archives.
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]
     
 *   An example of a template for the gallery
-    <div>
-      <a href="[[+file]]" title="[[+fname]]">
+    < div >
+      < a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
-      </a>
-    </div>
+      < /a >
+    < /div >
 
 *   An example of a template for the file archive
-    <div>
+    < div >
       File: [[+fname]]
       Saze: [[+size]]
-      <a href="[[+file]]">Download</a>
-    </div>
+      < a href="[[+file]]">Download< /a >
+    < /div >
 
 *   You can use c expansion FileUpload
     Example:
@@ -51,11 +51,11 @@ You can create a photo gallery or video, file archives.
     & path=`assets/images/[[*id]]`
     !]]
 
-    <div>
+    < div >
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
-    </div>
+    < /div >
 
 ### Authors
 <table>
