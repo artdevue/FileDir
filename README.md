@@ -1,11 +1,11 @@
-FileDir (MODX Revolution)
+# FileDir (MODX Revolution)
 =======================
-#### It is easy to display any type of files from a directory, filtering on the output type.
+** It is easy to display any type of files from a directory, filtering on the output type.
 You can create a photo gallery or video, file archives.
 
 ----------------------------------------
 
-#### Donwload http://modx.com/extras/package/filedir
+Donwload [MODX extras](http://modx.com/extras/package/filedir)
 
 ### Options:
 
@@ -26,10 +26,17 @@ You can create a photo gallery or video, file archives.
     &filetip - types of output files (comma), by default - 'jpg,png,gif'
 
 ### Example snippet call:
+<<<<<<< HEAD:README.markdown
     :::php[[!filedir? &dir = `assets/images/[[*id]]/`]]
+=======
+	```php
+    [[!filedir? &dir = `assets/images/[[*id]]/`]]
+>>>>>>> add:README.md
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]
+    ```
     
 *   An example of a template for the gallery
+<<<<<<< HEAD:README.markdown
     :::html< div >
       < a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
@@ -42,20 +49,50 @@ You can create a photo gallery or video, file archives.
       Saze: [[+size]]
       < a href="[[+file]]">Download< /a >
     < /div >
+=======
+	```html
+    <div>
+      <a href="[[+file]]" title="[[+fname]]">
+        <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
+      </a>
+    </div>
+    ```
+
+*   An example of a template for the file archive
+	```html
+    <div>
+      File: [[+fname]]
+      Saze: [[+size]]
+      <a href="[[+file]]">Download</a>
+    </div>
+    ```
+>>>>>>> add:README.md
 
 *   You can use c expansion FileUpload
     Example:
+    ```php
     [[!FileUpload?
     & uploadfields=`20`
     & uploadgroups=`Administrator, Editors, Subadmins`
     & path=`assets/images/[[*id]]`
     !]]
+<<<<<<< HEAD:README.markdown
 
     < div >
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
     < /div >
+=======
+    ```
+    ```html
+    <div>
+      File: [[+fname]]
+      Size: [[+size]]
+      <a href="[[+file]]">Download</a>
+    </div>
+    ```
+>>>>>>> add:README.md
 
 ### Authors
 <table>
