@@ -1,5 +1,5 @@
 # FileDir (MODX Revolution)
-=======================
+============================
 ** It is easy to display any type of files from a directory, filtering on the output type.
 You can create a photo gallery or video, file archives.
 
