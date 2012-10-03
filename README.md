@@ -32,11 +32,11 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]``
     
 *   An example of a template for the gallery
-    ``<div>
+    ```<div>
       <a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
       </a>
-    </div>``
+    </div>```
 
 *   An example of a template for the file archive
     ``<div>
