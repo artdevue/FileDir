@@ -27,19 +27,20 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
 
 ### Example snippet call:
 
-    [[!filedir? &dir = `assets/images/[[*id]]/`]]
+    ```php[[!filedir? &dir = `assets/images/[[*id]]/`]]
     [[!filedir? &dir = `assets/images/[[*id]]/`]]
     [[!filedir? &dir = `assets/images/61/` &fcache =`true`]]
+    ```
     
 *   An example of a template for the gallery
-    <div>
+    ```html<div>
       <a href="[[+file]]" title="[[+fname]]">
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
       </a>
-    </div>
+    </div>```
 
 *   An example of a template for the file archive
-    <div>
+    ```html<div>
       File: [[+fname]]
       Saze: [[+size]]
       <a href="[[+file]]">Download</a>
@@ -49,35 +50,38 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
         <img src="[[+file:rezimgcrop=`r-150x,c-150x75`]]" alt="[[+fname]]">
       </a>
     </div>
+    ```
 
 *   An example of a template for the file archive
-
+    ```html
     <div>
       File: [[+fname]]
       Saze: [[+size]]
       <a href="[[+file]]">Download</a>
     </div>
+    ```
 
 *   You can use c expansion FileUpload
     Example:
-
+    ```php
     [[!FileUpload?
     & uploadfields=`20`
     & uploadgroups=`Administrator, Editors, Subadmins`
     & path=`assets/images/[[*id]]`
-    ]]
-
+    !]]```
+	```html
     < div >
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
-    < /div >
+    < /div >```
 
-   <div>
+    ```html
+    <div>
       File: [[+fname]]
       Size: [[+size]]
       <a href="[[+file]]">Download</a>
-    </div>
+    </div>```
 
 ### Authors
 <table>
