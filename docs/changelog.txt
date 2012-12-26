@@ -1,0 +1,10 @@
+# December 26, 2012, version 1.0.0 rc1
+[0006] In the template, you can specify a class for the file to be downloaded.
+[0007] There was an option to call via getPage pagination.
+
+# 18.03.2012
+[0001] Improving code
+[0002] Added an option &limit
+[0003] Show the total number of files
+[0004] Added a template tplOut 
+[0005] Files with a zero size ignoring
