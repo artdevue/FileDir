@@ -17,6 +17,7 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
     [[+fdclass]] — class name depends on the file extension
     [[+size]] - the file size
     [[+fidx]] - the number of order
+    [[+date]] - creation date file
     &tplOut - outer Tpl chunk, by default - 'tplFileDirOut'
 *   Available placeholders:
     [[+res_filedir]] - Required, do not delete!
@@ -25,6 +26,9 @@ Donwload [MODX extras](http://modx.com/extras/package/filedir)
     &fcache - to enable the cache (false/true), the default - 'false'
     &cachetime - the time of caching, default '0 ', to clear the cache
     &filetip - types of output files (comma), by default - 'jpg,png,gif'
+    &sort - Enable or disable sorting (true or false, default - false)
+    &sortDir - sort direction (DESC or ASC, default - ASC)
+    &sortBy - name to sort (possibly: fname,file,fsize,date)
     &class — prefix for the style in the template tpl, by default - 'fd', ie if the file
            format is jpg, then placeholder [[+ fdclass]] in the template tpl bulet
            output - fd_jpg. If we are in the carts snippets Specify & class = ``,

@@ -1,3 +1,7 @@
+# November 10, 2013, version 1.1.0 rc1
+[0007] Added sorting (https://github.com/artdevue/FileDir/issues/3)
+[0008] Added placeholder Date (https://github.com/artdevue/FileDir/issues/2)
+
 # December 26, 2012, version 1.0.0 rc1
 [0006] In the template, you can specify a class for the file to be downloaded.
 [0007] There was an option to call via getPage pagination.
