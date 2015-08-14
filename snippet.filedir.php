@@ -136,13 +136,20 @@ foreach ($diri as $file) {
                 'date' => date($formatDate, $file->getCTime()),
                 'fidx' => $x
             );
-            $output[$x] = $modx->getChunk($tpl, $itemArray);
+            $imgArray[$x] = $itemArray;
         }
         $x++;
     }
 }
 if ($sort == true)
-    array_multisort($sortArray, ($sortDir === 'ASC' ? SORT_ASC : SORT_DESC), SORT_STRING, $output);
+    array_multisort($sortArray, ($sortDir === 'ASC' ? SORT_ASC : SORT_DESC), SORT_STRING, $imgArray);
+
+$x = 1;
+foreach ($imgArray as $img) {
+    $img['fidx'] = $x;
+    $output[$x] = $modx->getChunk($tpl, $img);
+    $x++;
+}
 
 $output['out'] = $modx->getChunk($tplOut, array(
     'res_filedir' => implode('', $output),
