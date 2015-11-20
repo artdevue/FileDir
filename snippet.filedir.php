@@ -23,6 +23,7 @@
  * [[+size]] - the file size
  * [[+fidx]] - the number of order
  * [[+date]] - creation date file
+ * [[+meta1]],[[+meta2]]...[[+metaN]] - description of file (if &metafile is exist and filled)
  * &tplOut - outer Tpl chunk, by default - 'tplFileDirOut'
  *    Available placeholders:
  * [[+res_filedir]] - Required, do not delete!
@@ -38,6 +39,13 @@
  *          format is jpg, then placeholder [[+ fdclass]] in the template tpl bulet
  *          output - fd_jpg. If we are in the carts snippets Specify & class = ``,
  *          then displays the placeholder in the class extension - jpg.
+ * &metafile - filename contains metadata for each file in folder.
+ *             One line = metadata for one file in folder.
+ *             Use "|" to separate [[+meta1]],[[+meta2]] ... [[metaN]]
+ *             Default file name is "FileDirMeta.txt"
+ *             Example:
+ *             File1Param1|File1Param1|File1Param1
+ *             File2Param1|File2Param1|File2Param1
  *
  * Example snippet call:
  * [[!filedir? &dir = `assets/images/[[*id]]/`]]
@@ -73,6 +81,7 @@ $sort = $modx->getOption('sort', $scriptProperties, false);
 $sortDir = $modx->getOption('sortDir', $scriptProperties, 'ASC'); // possibly: DESC or ASC
 $sortBy = $modx->getOption('sortBy', $scriptProperties, 'fname'); // possibly: fname,file,fsize,date
 $formatDate = $modx->getOption('formatDate', $scriptProperties, 'd/m/Y H:i');
+$metafile = $modx->getOption('metafile', $scriptProperties, 'FileDirMeta.txt');
 $inCache = true;
 
 if (!array_search($sortBy, array('fname', 'file', 'fsize', 'date')))
@@ -96,8 +105,14 @@ if ($dir{0} == '/')
 if (substr($dir, -1) != '/')
     $dir .= '/';
 // verify the existence of a directory
-if (!is_dir($dir))
-    return 'Error! directory does not exist.';
+if (!is_dir($dir)) {
+    $modx->log(modX::LOG_LEVEL_ERROR, "[FilDir] the folder $dir does not exist!");
+    return;
+}
+// verify the existence of a metafile
+if (file_exists($dir . $metafile)) {
+    $metadata = file($dir . $metafile);
+}
 
 $sizes = array(" Bytes", " KB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB");
 $diri = new DirectoryIterator($base_path . $dir);
@@ -107,7 +122,7 @@ $output = array();
 $sortArray = array();
 
 foreach ($diri as $file) {
-    if ($file->isFile() and in_array($file->getExtension(), $filetip) and ($file->getSize() > 0)) {
+    if ($file->isFile() and in_array($file->getExtension(), $filetip) and ($file->getSize() > 0) and $file->getFilename() != $metafile) {
         switch ($sortBy) {
             case 'fname':
                 $sortArray[$x] = $file->getBasename('.' . $file->getExtension());
@@ -134,7 +149,6 @@ foreach ($diri as $file) {
                 'size' => round(($file->getSize()) / pow(1024, ($i = floor(log(($file->getSize()), 1024)))), $i > 1 ? 2 : 0) . $sizes[$i],
                 'fdclass' => trim(strlen($class)) > 0 ? $class . '_' . $file->getExtension() : $file->getExtension(),
                 'date' => date($formatDate, $file->getCTime()),
-                'fidx' => $x
             );
             $imgArray[$x] = $itemArray;
         }
@@ -144,9 +158,16 @@ foreach ($diri as $file) {
 if ($sort == true)
     array_multisort($sortArray, ($sortDir === 'ASC' ? SORT_ASC : SORT_DESC), SORT_STRING, $imgArray);
 
+// Create [[+fidx]] and [[+meta1]],[[+meta2]]...[[+metaN]] placeholders after sorting
 $x = 1;
 foreach ($imgArray as $img) {
     $img['fidx'] = $x;
+    if (isset($metadata[$x - 1])) {
+        $metaArray = explode('|', $metadata[$x - 1]);
+        foreach ($metaArray as $key => $value) {
+            $img["meta" . ($key + 1)] = $value;
+        }
+    }
     $output[$x] = $modx->getChunk($tpl, $img);
     $x++;
 }
